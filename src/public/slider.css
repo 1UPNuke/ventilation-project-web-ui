@@ -1,0 +1,55 @@
+:root {
+    --spin-speed: 1s;
+}
+
+.slidecontainer {
+    display: inline-block;
+    width: 30em;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #333;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+    display: block;
+    width: 3em;
+    height: 3em;
+    border: 0;
+    background: url('fan.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    filter: invert(100%);
+    animation: spin var(--spin-speed) linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.slider-num {
+    font-size: 175%;
+}

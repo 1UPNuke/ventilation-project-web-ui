@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventilation Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="toggle.css">
+    <link rel="stylesheet" href="slider.css">
+</head>
+<body>
+    <pre id="error-notif" class="hidden">!</pre>
+    <header>
+        <h1>Ventilation Project Controller</h1>
+    </header>
+    <main>
+        <label for="auto">Auto: </label>
+        <label class="switch">
+            <input type="checkbox" id="auto" name="auto">
+            <span class="toggle round"></span>
+        </label>
+        <div id="fan-speed-container">
+            <label for="auto">Fan Speed: </label>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="50" class="slider" id="fan-speed" name="fan-speed">
+            </div>
+            <pre id="fan-speed-value" class="slider-num">0%</pre>
+        </div>
+        <div id="target-pa-container" class="hidden">
+            <label for="auto">Target Pascals: </label>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="120" value="60" class="slider" id="target-pa" name="target-pa">
+            </div>
+            <pre id="target-pa-value" class="slider-num">0Pa</pre>
+        </div>
+        <br>
+        <h2>Pressure: <span id="pressure">0Pa</span> 
+            | Temperature:&nbsp;<span id="temp">0&deg;C</span> 
+            | Relative Humidity:&nbsp;<span id="rh">0%</span> 
+            | CO<sub>2</sub>:&nbsp;<span id="co2">0ppm</span></h2>
+        <br>
+        <div id="chart-container">
+            <div class="chart"><canvas id="pressure-chart"></canvas></div>
+            <div class="chart"><canvas id="temperature-chart"></canvas></div>
+            <div class="chart"><canvas id="humidity-chart"></canvas></div>
+            <div class="chart"><canvas id="co2-chart"></canvas></div>
+        </div>
+    </main>
+</body>
+</html>
