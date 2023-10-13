@@ -27,7 +27,16 @@ router.post("/", async (req : Request, res : Response) => {
     if(auto) json = {auto, targetPa}
     else json = {auto, fanSpeed}
 
+    let oldData : IVentData | null = await VentData.findOne().sort({createdAt:-1});
+
     client.publish("controller/settings", JSON.stringify(json));
+
+    if(oldData) {
+        oldData.auto = auto;
+        oldData.fanSpeed = fanSpeed;
+        oldData.targetPa = targetPa;
+        client.publish("controller/status", JSON.stringify(oldData));
+    }
     
     res.status(201);
 });
