@@ -1,8 +1,11 @@
 import mqtt from 'mqtt';
 import VentData, { IVentData } from "./models/VentData.ts";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 function connectMQTT() {
-  const client = mqtt.connect("mqtt:localhost");
+  const client = mqtt.connect( process.env.MQTT_BROKER || "mqtt:localhost");
 
   client.on("connect", () => {
     client.subscribe("controller/status", err=>{
