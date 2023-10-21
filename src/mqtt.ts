@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 function connectMQTT() {
-  const client = mqtt.connect( process.env.MQTT_BROKER || "mqtt:localhost");
+  const client = mqtt.connect( process.env.MQTT_BROKER || "mqtt:192.168.1.107");
 
   client.on("connect", () => {
     client.subscribe("controller/status", err=>{
