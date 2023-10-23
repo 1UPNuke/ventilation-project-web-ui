@@ -7,7 +7,6 @@ const router = Router();
 
 const client = connectMQTT();
 
-// Get all cars with or without filters
 router.get("/", async (req : Request, res : Response) => res.json(await VentData.find().sort({createdAt:1}).limit(8640)));
 router.get("/latest", async (req : Request, res : Response) => res.json(await VentData.findOne().sort({createdAt:-1})));
 
